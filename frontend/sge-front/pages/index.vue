@@ -1,6 +1,8 @@
 <script setup lang="ts">
     import { ref, computed, reactive } from 'vue'
     
+    const {signIn} = useAuth();
+    
     //JÉSSICA NÃO TRANQUE O CURSO:
     //const username = ref('')
     //const password = ref('')
@@ -20,6 +22,22 @@
     const makeMul = (n1:number,n2:number):number => n1 * n2
 
     const result = computed(()=> makeMul(value1.value,value2.value))*/
+    
+    /*const submitLogin = async () =>{
+        try{
+            await signIn(credentials,{redirect:false});
+            navigateTo("/home");
+        }catch(error){
+            alert("Erro não foi possivel logar");
+        }
+    }*/
+    const submitLogin = () =>{
+        try{
+            signIn(credentials,{redirect:false}).then(()=>{navigateTo("/home")});
+        }catch(error){
+            alert("Erro não foi possivel logar");
+        }
+    }
 </script>
 
 <template>
@@ -46,7 +64,7 @@
          <section class="login_panel">
             <div class="login_content flex_center">
                 <h1>LOGIN</h1>
-                <form class="login_form">
+                <form class="login_form" v-on:submit.prevent="submitLogin">
                     <div class="input_container">
                         <CustomInput label="LOGIN" inputId="user_login"
                             v-model="credentials.username"
@@ -112,6 +130,10 @@
                     width: 60%;
                     .input_container{
                         margin-top: 30px;
+                        :focus{
+                            border-bottom: 2px solid crimson;
+                            outline: none;
+                        }
                     }
                     .customButton{
                         margin-top: 50px;

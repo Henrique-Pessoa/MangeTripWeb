@@ -26,10 +26,10 @@ const model = defineModel();
     label:focus,
     label:valid,
     input:focus,
-    input:valid{
-        outline: 0;
-        border-color: crimson;
-    }
+    //input:valid{
+    //    outline: 0;
+    //    border-color: crimson;
+    //}
 
     input{
         width:100%;

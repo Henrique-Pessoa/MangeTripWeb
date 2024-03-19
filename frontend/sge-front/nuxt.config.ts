@@ -1,12 +1,26 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   typescript: {
     typeCheck: true
   },
   modules: [
-    'nuxt-primevue'
+    'nuxt-primevue',
+    '@sidebase/nuxt-auth'
   ],
+  auth:{
+    baseURL:"http://localhost:8000",
+    provider:{
+      type:"local",
+      endpoints:{
+        signIn:{path:"/token/login",method:"post"},
+        signOut:{path:"/token/logout",method:"post"},
+        signUp:undefined,
+        getSession:{path:"/users",method:"get"},
+      },
+      token:{signInResponseTokenPointer:"/auth_token",type:"Token"},
+      pages:{login:"/"}
+    }
+  },
   primevue: {
     components: {
       include: ['Button']
