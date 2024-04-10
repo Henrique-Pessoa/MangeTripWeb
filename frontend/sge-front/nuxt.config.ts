@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@sidebase/nuxt-auth'
   ],
   auth:{
-    baseURL:"http://localhost:8000",
+    baseURL:"https://mangetripdeploy-production.up.railway.app/",
     provider:{
       type:"local",
       endpoints:{
