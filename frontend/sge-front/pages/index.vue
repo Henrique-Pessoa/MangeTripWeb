@@ -8,7 +8,7 @@
     //const password = ref('')
 
     const credentials = reactive({
-        username: '',
+        email: '',
         password: ''
     });
 
@@ -67,7 +67,7 @@
                 <form class="login_form" v-on:submit.prevent="submitLogin">
                     <div class="input_container">
                         <CustomInput label="LOGIN" inputId="user_login"
-                            v-model="credentials.username"
+                            v-model="credentials.email"
                         />
                     </div>
                     <div class="input_container">
